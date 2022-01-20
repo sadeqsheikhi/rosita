@@ -1,0 +1,53 @@
+// =====================================================================================
+// hide on screens
+// =====================================================================================
+@media (max-width: 991px) {
+  .small-hide {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .hide-xs {
+    display: none !important;
+  }
+}
+
+.hide-sm {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .hide-md {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1439px) {
+  .hide-lg {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-sm-min {
+    display: none !important;
+  }
+}
+
+@media (min-width: 991px) {
+  .hide-md-min {
+    display: none !important;
+  }
+  .row-md-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (min-width: 1439px) {
+  .hide-lg-min {
+    display: none !important;
+  }
+}

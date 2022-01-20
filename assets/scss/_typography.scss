@@ -1,0 +1,112 @@
+// ==================================================================================
+// FONT DECLARATIONS
+// ==================================================================================
+@font-face {
+  font-family: 'dana';
+  // support for IE
+  src: url('../fonts/dana-fanum-medium.eot');
+  // support for other browsers : use woff and woff2 first
+  src: url('../fonts/dana-fanum-medium.woff') format('woff'),
+  url('../fonts/dana-fanum-medium.woff2') format('woff2');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'dana';
+  // support for IE
+  src: url('../fonts/dana-fanum-black.eot');
+  // support for other browsers : use woff and woff2 first
+  src: url('../fonts/dana-fanum-black.woff') format('woff'),
+  url('../fonts/dana-fanum-black.woff2') format('woff2');
+
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'dana-en';
+  // support for IE
+  src: url('../fonts/dana-medium.eot');
+  // support for other browsers : use woff and woff2 first
+  src: url('../fonts/dana-medium.woff') format('woff'),
+  url('../fonts/dana-medium.woff2') format('woff2');
+
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'dana-en';
+  // support for IE
+  src: url('../fonts/dana-black.eot');
+  // support for other browsers : use woff and woff2 first
+  src: url('../fonts/dana-black.woff') format('woff'),
+  url('../fonts/dana-black.woff2') format('woff2');
+
+  font-weight: 900;
+  font-style: normal;
+}
+
+// ==================================================================================
+// BASE
+// ==================================================================================
+body, html, p, div, section, header, footer, span, label, strong, a {
+  font-family: $font-primary;
+  direction: rtl;
+  color: $c-text;
+}
+
+.ltr {
+  direction: ltr !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: 900;
+}
+
+p {
+  font-size: .95rem;
+  font-weight: normal;
+}
+
+i {
+  font-family: initial;
+}
+
+
+
+// ==================================================================================
+// HEADINGS
+// ==================================================================================
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.p-standalone {
+  margin: 1rem 0;
+}
+
+// ==================================================================================
+// adjusting typography for smaller screens
+// ==================================================================================
+@media (max-width: 991px) {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+  }
+
+  p {
+    font-size: .95rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .p-standalone {
+  }
+}

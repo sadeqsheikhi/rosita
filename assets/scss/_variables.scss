@@ -1,0 +1,82 @@
+// ================================================================================
+// SADEQ STYLINGS == DECLARATIONS
+// THIS FILE IS A PLACE FOR VARIABLES, FUNCTIONS AND MIXINS, STUFF TO USE EVERY WHERE
+// PLEASE AVOID USING DIRECT COLOR DEFINITIONS IN OTHER FILES FOR CONSISTENCY AND EASIER THEME CHANGE
+// ================================================================================
+
+// ======================================== FONTS
+$font-primary : 'dana', 'IRANYekan', 'Yekan', sans-serif;
+$font-secondary : Pelak, IRANSansWeb, 'IRANYekan', 'Yekan', sans-serif;;
+
+
+//  ======================================== COLORS
+// primary
+$c-primary: #905d9a;
+$c-primary-dark: #6b4572;
+$c-primary-bright: #ef9bff;
+$c-primary-light: #c57fd2;
+
+// secondary
+$c-secondary: #f5a59c;
+$c-secondary-dark: #b87d76;
+$c-secondary-bright: #ffb8b1;
+$c-secondary-light: #ffaba1;
+
+// tertiary
+$c-tertiary: #135667;
+$c-tertiary-dark: #0d3e4b;
+$c-tertiary-bright: #2391ac;
+$c-tertiary-light: #197086;
+
+// call to action-variations
+$c-action: #ffe100;
+$c-action-dark: #c2af00;
+$c-action-light: #e2cf3b;
+
+// utility colors
+$c-text: #092a32;
+$c-black: #0d0d0d;
+$c-white : white;
+$c-white-dark: #F2F2F2;
+
+$c-danger: #ff8790;
+$c-danger-dark: #ff6169;
+$c-danger-light: #faa8ab;
+$c-danger-text: #ff134d;
+
+$c-success: #47d992;
+$c-success-dark: #309267;
+$c-success-light: #53fca9;
+$c-success-text: #07845d;
+
+$c-info: #BAE6FD;
+$c-text-info: #006597;
+
+$c-disable: rgba(242, 242, 242, .8);
+$c-disable-light: rgba(239, 239, 239, 0.8);
+$c-disable-dark: rgba(144, 144, 144, 0.8);
+
+
+// GRADIENTS USED IN THE APPLICATION
+// these statics are used in multiple bgs
+$gr-primary :linear-gradient(to bottom left, #905d9a 0%, #f5a59c 100%);;
+
+//  ======================================== UTILITIES FOR CENTERING
+%transform-center-h {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+%transform-center-v {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+%transform-center-both {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

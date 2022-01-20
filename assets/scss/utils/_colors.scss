@@ -1,0 +1,82 @@
+// ==================================================================================
+// COLOR UTILS
+// ==================================================================================
+.bg-main {
+  background: $c-primary !important;
+}
+
+.text-main {
+  color: $c-primary !important;
+}
+
+.bg-secondary {
+  background: $c-secondary !important;
+}
+
+.text-secondary {
+  color: $c-secondary !important;
+}
+
+.bg-tertiary {
+  background: $c-tertiary !important;
+}
+
+.text-tertiary {
+  color: $c-tertiary !important;
+}
+
+.bg-action {
+  background: $c-action !important;
+}
+
+.text-action {
+  color: $c-action-dark !important;
+}
+
+.bg-danger {
+  background: $c-danger !important;
+}
+
+.text-danger {
+  color: $c-danger-text !important;
+}
+
+.bg-success {
+  background: $c-success !important;
+}
+
+.text-success {
+  background: $c-success-text !important;
+}
+
+.bg-disabled {
+  background: $c-disable;
+}
+
+.text-disabled {
+  color: $c-disable-dark;
+}
+
+.bg-white-95 {
+  background: rgba(white, .95);
+}
+
+.bg-white-90 {
+  background: rgba(white, .90);
+}
+
+.bg-white-85 {
+  background: rgba(white, .85);
+}
+
+.bg-white-15 {
+  background: rgba(white, .15);
+}
+
+.bg-white-10 {
+  background: rgba(white, .10);
+}
+
+.bg-white-5 {
+  background: rgba(white, .5);
+}

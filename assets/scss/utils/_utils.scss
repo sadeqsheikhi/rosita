@@ -1,0 +1,85 @@
+// ==================================================================================
+// position CLASSES
+// ==================================================================================
+.u-center-v {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.u-center-h {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.u-center-both {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ==================================================================================
+// typography Classes
+// ==================================================================================
+.text-bold {
+  font-weight: bold !important;
+}
+
+.text-xs {
+  font-size: .8rem !important;
+}
+
+.text-sm {
+  font-size: .9rem !important;
+}
+
+.text-md {
+  font-size: 1rem !important;
+}
+
+.text-lg {
+  font-size: 1.1rem !important;
+}
+
+.text-xl {
+  font-size: 1.3rem !important;
+}
+
+// ==================================================================================
+// border-radius
+// ==================================================================================
+.round-xs{
+  border-radius: 3px !important;
+}
+.round-sm{
+border-radius: 5px !important;
+}
+.round-md{
+border-radius: 10px !important;
+}
+.round-lg{
+border-radius: 15px !important;
+}
+.round-full{
+border-radius: 10000px !important;
+}
+
+// ==================================================================================
+// quasar breaking the flex - do it on an empty div and it will automatically activate it
+// ==================================================================================
+.flex-break {
+  flex: 1 0 100% !important
+}
+
+.row {
+  .flex-break {
+    height: 0 !important
+  }
+}
+
+
+
+
