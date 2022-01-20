@@ -52,10 +52,16 @@
 // ==================================================================================
 // BASE
 // ==================================================================================
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body, html, p, div, section, header, footer, span, label, strong, a {
   font-family: $font-primary;
   direction: rtl;
-  color: $c-text;
+  color: $c-white;
 }
 
 .ltr {
