@@ -46,11 +46,11 @@
 }
 
 .text-success {
-  background: $c-success-text !important;
+  color: $c-success-text !important;
 }
 
 .bg-disabled {
-  background: $c-disable;
+  background: $c-disable-dark !important;
 }
 
 .text-disabled {

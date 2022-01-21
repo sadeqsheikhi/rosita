@@ -58,7 +58,7 @@
   box-sizing: border-box;
 }
 
-body, html, p, div, section, header, footer, span, label, strong, a {
+body, html, p, div, section, header, footer, span, label, strong, a, input, * {
   font-family: $font-primary;
   direction: rtl;
   color: $c-white;

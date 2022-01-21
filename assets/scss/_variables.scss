@@ -52,14 +52,15 @@ $c-success-text: #07845d;
 $c-info: #BAE6FD;
 $c-text-info: #006597;
 
-$c-disable: rgba(242, 242, 242, .8);
+$c-disable: rgba(194, 194, 194, 0.8);
 $c-disable-light: rgba(239, 239, 239, 0.8);
 $c-disable-dark: rgba(144, 144, 144, 0.8);
 
 
 // GRADIENTS USED IN THE APPLICATION
 // these statics are used in multiple bgs
-$gr-primary :linear-gradient(to bottom left, #905d9a 0%, #f5a59c 100%);;
+$gr-primary :linear-gradient(to bottom left, #905d9a 0%, #f5a59c 100%);
+$backdrop: blur(30px) brightness(0.85) opacity(1);
 
 //  ======================================== UTILITIES FOR CENTERING
 %transform-center-h {

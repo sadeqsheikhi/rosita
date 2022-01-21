@@ -16,8 +16,16 @@
   </svg>
 </template>
 
+<script>
+
+export default {
+  name: 'RozitaLogo',
+}
+
+</script>
+
 <style>
 .rozita-logo {
-  height: 180px;
+  margin-bottom: 1rem;
 }
 </style>

@@ -1,3 +1,15 @@
+.backdrop{
+  backdrop-filter: $backdrop;
+  border-radius: 3px;
+  &.active {
+    backdrop-filter: blur(30px) brightness(1.25) opacity(1);
+    transition: all ease .2s;
+  }
+}
+
+.line-through {
+  text-decoration: line-through;
+}
 // ==================================================================================
 // position CLASSES
 // ==================================================================================

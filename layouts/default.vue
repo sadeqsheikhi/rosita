@@ -1,7 +1,7 @@
 <template>
-  <div class='layout-wrapper'>
+  <div class='layout-wrapper' :style="{'height': height}">
     <Nuxt />
-    <div class='app-info px-2'>
+    <div class='app-info px-2' v-if='$route.path !== "/"'>
       <p>
         روزیتا
       </p>
@@ -14,19 +14,33 @@
 
 <script>
 export default {
-  name: 'default'
+  name: 'default',
+  data() {
+    return {
+      height: '100vh'
+    }
+  },
+  mounted() {
+    this.height = window.innerHeight + 'px'
+    window.addEventListener('resize', () => {
+      this.height = window.innerHeight + 'px'
+    })
+  }
 }
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss'>
 @import "assets/scss/variables";
 .layout-wrapper {
   background: $c-tertiary;
   background: url("assets/img/app-bg.jpg") no-repeat;
   background-position: bottom center;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 90vh;
   width: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 
   //display
   position: relative;
