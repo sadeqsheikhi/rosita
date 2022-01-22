@@ -5,7 +5,7 @@ export default {
   },
 
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
+  ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -34,8 +34,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/vee-validate.js',
-    '@/plugins/directives.js'
-  ],
+    '@/plugins/directives.js',
+],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -49,7 +49,25 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyB4BaIZZcL8gAw4sTnQRylpnaj14nBgACQ",
+          authDomain: "rozita-15c30.firebaseapp.com",
+          projectId: "rozita-15c30",
+          storageBucket: "rozita-15c30.appspot.com",
+          messagingSenderId: "1032771632023",
+          appId: "1:1032771632023:web:ff3c5467a3332890a7e2d2",
+          measurementId: "G-6T0BH5BXG3"
+        },
+        services: {
+          auth: true,
+          firestore: true
+        }
+      }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

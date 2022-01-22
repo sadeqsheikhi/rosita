@@ -1,5 +1,5 @@
 <template>
-  <validation-provider :mode='mode'  :rules='rules' v-slot='{ errors }'>
+  <validation-provider :mode='mode'  :rules='rules' v-slot='{ errors }' :vid='vid'>
     <label class='hide' for='input-username'>
       نام کاربری
     </label>
@@ -36,10 +36,17 @@ export default {
     },
     mode: {
       default: 'eager',
-    }
+    },
+    vid : {}
   },
   components: {
     ValidationProvider,
+  },
+  watch: {
+    value (val) {
+      // allows us to use v-model on our input.
+      this.$emit('input', val);
+    }
   }
 }
 </script>
@@ -86,12 +93,11 @@ input, textarea {
 
   .input-error {
     color: white;
-    font-weight: 300;
     background: $c-danger;
-    margin-top: .4rem;
     border-radius: 4px;
     padding: .3rem 1rem;
     text-align: right;
+    margin-top: 0.5rem;
 
     i {
       margin-left: 0.5rem;

@@ -1,25 +1,36 @@
 <template>
   <div class='add-item px-2'>
-    <input type='text' placeholder='افزودن آیتم ...' @keypress.enter='addItem'>
-    <img src='@/assets/img/logo.jpg' alt='لوگوی روزیتا' @click='addItem'>
+    <input type='text' placeholder='افزودن آیتم ...' v-model='title'
+    @keypress.enter.prevent='adding'
+    >
+    <img v-if='!inSubmission' src='@/assets/img/logo.jpg' alt='لوگوی روزیتا' @click='adding'>
+    <i v-else class="fas fa-lg fa-spinner fa-spin text-tertiary"></i>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: 'AddItem',
   data() {
     return {
       inSubmission: false,
+      title: '',
     }
   },
   methods: {
-    addItem() {
+    ...mapActions(['addItem', 'getItems']),
+    async adding() {
+      if (this.title === '' || this.title.length < 3) return
       if (this.inSubmission) return
       this.inSubmission = true
+
       try {
         // send req to api
+        let res = await this.addItem(this.title)
+        this.title = ''
         this.inSubmission = false
+        this.getItems()
       } catch (e) {
         this.inSubmission = false
       }

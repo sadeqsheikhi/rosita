@@ -1,41 +1,52 @@
 <template>
   <main>
     <s-header></s-header>
-    <div class='tool-bar' v-if='!noData'>
-      <toggle-btn name='همه'></toggle-btn>
-      <toggle-btn name='تکمیل شده'></toggle-btn>
-      <toggle-btn name='مانده'></toggle-btn>
+    <div class='tool-bar' v-if='items[0]'>
+      <toggle-btn name='همه' en-name='all'></toggle-btn>
+      <toggle-btn name='تکمیل شده' en-name='done'></toggle-btn>
+      <toggle-btn name='مانده' en-name='notDone'></toggle-btn>
       <search></search>
     </div>
 
-    <div class='no-item' v-if='noData'>
+    <div class='no-item' v-if='items.length === 0 || $store.state.searchFailed'>
       <i class='fa fa-4x fa-exclamation-circle'></i>
       <h3 class=''>آیتمی وجود ندارد</h3>
     </div>
 
-    <div class='item-list'>
+    <div class='item-list' v-if='$store.state.searchItems.length === 0 && !$store.state.searchFailed'>
       <todo-item v-for='item in items' :key='item.id' :item='item'></todo-item>
+    </div>
+
+    <div class='item-list' v-if='$store.state.searchItems[0]'>
+      <todo-item v-for='item in searchItems' :key='item.id' :item='item'></todo-item>
     </div>
   </main>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'IndexPage',
   layout: 'main',
   data() {
-    return {
-      noData: false,
-      items: [
-        {
-          id: '1',
-          name: 'بیدار شدن از خواب',
-          done: true,
-          doneTime: '12:34',
-        }
-      ],
+    return {}
+  },
+  computed: {
+    ...mapState(['items', 'searchItems'])
+  },
+  async middleware({ store, redirect }) {
+    // If the user is not authenticated
+    if (!store.state.user.authenticated) {
+      return redirect('/login')
     }
-  }
+  },
+  methods: {
+  },
+  async mounted() {
+    await this.$store.dispatch('getItems')
+  },
+
 }
 </script>
 
@@ -55,7 +66,7 @@ main {
 .tool-bar {
   display: flex;
   flex-direction: row;
-  justify-content:flex-start;
+  justify-content: flex-start;
   width: 100%;
   margin-top: 1rem;
   align-items: center;
@@ -74,7 +85,7 @@ main {
 .item-list {
   display: flex;
   width: 100%;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
 }

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'main.vue',
   data() {
@@ -13,11 +14,20 @@ export default {
       height: '100vh'
     }
   },
+  methods: {
+    ...mapMutations(['setAuthentication'])
+  },
   mounted() {
     this.height = window.innerHeight + 'px'
+
     window.addEventListener('resize', () => {
       this.height = window.innerHeight + 'px'
     })
+
+    this.$fire.auth.onAuthStateChanged( user => {
+        this.setAuthentication(user)
+      }
+    )
   }
 }
 </script>

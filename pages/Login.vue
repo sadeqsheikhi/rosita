@@ -7,18 +7,22 @@
     <validation-observer slim v-slot='{dirty, handleSubmit }'>
       <form @submit.prevent='handleSubmit(login)'>
         <div class='input-group'>
-          <SInput name='نام کاربری' placeholder='نام کاربری' :ltr='true'
-                  type='text' rules='required|min:4|username'></SInput>
+          <SInput name='ایمیل' placeholder='ایمیل' :ltr='true' v-model='email'
+                  type='text' rules='required|email'></SInput>
 
-          <SInput name='رمزعبور' placeholder='رمزعبور'
-                  type='password' rules='required|password_validator'></SInput>
+          <SInput name='رمزعبور' placeholder='رمزعبور' v-model='password'
+                  type='password' rules='required'></SInput>
         </div>
-        <SBtn :disable='dirty' :loading='inSubmission'>
-          ورود
+        <SBtn :loading='inSubmission' :success='success'>
+          {{ btnText }}
         </SBtn>
+        <p class='input-error' v-if='serverError'>
+          {{ serverError }}
+        </p>
       </form>
+
     </validation-observer>
-    <p>
+    <p class='mt-1'>
       حساب کاربری نداری؟
       <nuxt-link to='/signup'>
         ثبت نام کن
@@ -29,33 +33,60 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate'
-
+import { mapMutations } from 'vuex'
 export default {
   name: 'Login',
   data() {
     return {
       inSubmission: false,
+      btnText: 'ورود',
+      success: false,
+      email: '',
+      password: '',
+      serverError: ''
     }
   },
+
   head: {
-    title: 'روزیتا - ورود به حساب کاربری',
+    title: 'روزیتا - ورود به حساب کاربری'
+  },
+  async middleware({ store, redirect }) {
+      if (store.state.user.authenticated) {
+        return redirect('/')
+      }
   },
   components: {
     ValidationObserver
   },
   methods: {
-    login() {
+    ...mapMutations({ setUserInfo: 'setUserInfo' }),
+    async login() {
       // abort if loading
-      if(this.inSubmission) return
+      if (this.inSubmission) return
       // setting loading state
       this.inSubmission = true
       try {
         // requesting to api
+        const req = await this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
+
+        // setting user-email
+        this.setUserInfo({
+          email: req.user.email,
+          uid: req.user.uid,
+          authenticated: true,
+        })
+
         // finish loading state
-        // showing success message and redirect to index file
+        this.inSubmission = false
+        this.btnText = 'ورود موفق'
+        this.success = true
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 1000)
       } catch (e) {
-        // showing error messages
-        // finish loading state
+        this.inSubmission = false
+        // this.serverError = e.message
+        this.serverError = 'ایمیل یا رمزعبور اشتباه است'
       }
     }
   }

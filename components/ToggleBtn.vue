@@ -1,24 +1,27 @@
 <template>
   <div class='toggle-btn backdrop' @click='activateState'
-  :class="{'active': state === 'on'}">
+  :class="{'active': $store.state.filterState === enName}">
     {{ name }}
   </div>
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'ToggleBtn',
   data() {
     return {
-      state: 'off'
+
     }
   },
-  props: ['name'],
-  emits: ['filter'],
+  props: ['name', 'enName'],
   methods: {
+    ...mapMutations(['setFilterState']),
     activateState() {
       // change the state in vuex store
-      this.state = 'on'
+      if (this.$store.state.filterState === this.enName) return
+      this.setFilterState(this.enName)
+      this.$store.dispatch('getItems')
     }
   }
 }

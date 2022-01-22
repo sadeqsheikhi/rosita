@@ -1,6 +1,6 @@
 <template>
 <div class='backdrop' :class="{'open': search}">
-  <input type='text' placeholder='جستجو کنید ...' v-model='searchText' @keypress.enter="performSearch">
+  <input type='text' placeholder='جستجو کنید ...' v-model='searchText' @keypress.enter.prevent="performSearch">
   <i v-if='!search' class='fa fa-search' @click='toggleSearch'></i>
   <i v-else class='fa fa-times' @click='toggleSearch'></i>
 </div>
@@ -18,13 +18,12 @@ export default {
   methods: {
     toggleSearch() {
       this.search = !this.search
+      this.searchText = ''
+      this.$store.commit('clearSearchItems')
+      this.$store.dispatch('getItems')
     },
-    performSearch() {
-      try {
-
-      } catch (e) {
-
-      }
+    async performSearch() {
+      await this.$store.dispatch('search', this.searchText)
     }
   }
 }

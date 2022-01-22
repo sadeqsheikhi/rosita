@@ -1,8 +1,12 @@
 <template>
   <header>
     <div class='user-date'>
-      <p>
-        {{ username }}
+      <p class='text-sm user-email'>
+        {{ user.email || 'userEmail' }}
+        <span class='logout' @click='logout'>
+          <i class="fas fa-sign-out-alt ml-1"></i>
+          خروج از حساب
+        </span>
       </p>
       <p>
         {{ date }}
@@ -10,8 +14,8 @@
     </div>
 
     <div class='done'>
-      <div class='number' :class='{"success": doneJobs}'>
-        {{ doneJobs }}
+      <div class='number' :class='{"success": $store.state.doneItems}'>
+        {{ $store.state.doneItems }}
       </div>
       <p>
         کار انجام شده
@@ -21,8 +25,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 const moment = require('jalali-moment')
-
 export default {
   name: 'SHeader',
   data() {
@@ -32,12 +36,25 @@ export default {
       doneJobs: '5',
     }
   },
+  computed: {
+    ...mapState(['user']),
+  },
   mounted() {
     this.getCurrentDate()
   },
   methods: {
+    ...mapMutations(['setUserInfo']),
     getCurrentDate() {
       this.date = moment().locale('fa').format('dddd D MMMM YYYY')
+    },
+    logout() {
+      this.setUserInfo({
+        email: '',
+        uid: '',
+        authenticated: false,
+      })
+      this.$fire.auth.signOut()
+      this.$router.push('/login')
     }
   }
 }
@@ -81,6 +98,26 @@ header {
       &.success {
         color: $c-success-dark !important;
       }
+    }
+  }
+}
+
+.user-email {
+  position: relative;
+  .logout {
+    display: none;
+    padding: .5rem 1rem;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    background: $c-black;
+  }
+
+  &:hover {
+    .logout {
+      display: block;
     }
   }
 }

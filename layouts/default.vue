@@ -13,18 +13,37 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
   name: 'default',
   data() {
     return {
-      height: '100vh'
+      height: '100vh',
     }
+  },
+  methods: {
+    ...mapMutations({
+      setAuthentication: 'setAuthentication',
+      setUserInfo: 'setUserInfo',
+    })
   },
   mounted() {
     this.height = window.innerHeight + 'px'
     window.addEventListener('resize', () => {
       this.height = window.innerHeight + 'px'
     })
+
+    this.$fire.auth.onAuthStateChanged( async (user) => {
+      await this.setAuthentication(user)
+      if (this.$store.state.user.authenticated) {
+        await this.$router.push('/')
+      } else {
+        if (this.$route.path === '/') {
+          await this.$router.push('/login')
+        }
+      }
+      }
+    )
   }
 }
 </script>

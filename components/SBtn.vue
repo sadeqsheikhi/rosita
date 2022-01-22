@@ -1,6 +1,6 @@
 <template>
-  <button class='primary-btn' type='submit' :disabled='disable'
-  :class="{'disabled': disable}">
+  <button class='primary-btn' type='submit' :disabled='loading'
+  :class="{'disabled': loading, 'success': success}" >
     <slot v-if='!loading'></slot>
     <i v-else class="fas fa-spinner fa-spin"></i>
   </button>
@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'Btn',
-  props: ['disable', 'loading']
+  props: ['loading', 'success']
 }
 </script>
 
@@ -21,11 +21,15 @@ export default {
   font-size: 1.2rem;
   color: white;
   background: $gr-primary;
-  margin: 0 0 1rem 0;
+  margin: 0;
   border-radius: 3px;
   outline: none;
   border: none;
   width: 100%;
+
+  &.success {
+    background: $c-success !important;
+  }
 
   &.disabled {
   cursor: not-allowed;
