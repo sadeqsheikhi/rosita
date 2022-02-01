@@ -18,7 +18,7 @@
     "@persian-tools/persian-tools": "^3.2.1",
     "core-js": "^3.19.3",
     "firebase": "^9.6.4",
-    "jalali-moment": "^3.3.10",
+    "jalali-moment": "^3.3.11",
     "nuxt": "^2.15.8",
     "vee-validate": "^3.4.14",
     "vue": "^2.6.14",
