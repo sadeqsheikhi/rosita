@@ -16,7 +16,7 @@
     "@nuxtjs/firebase": "^8.2.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@persian-tools/persian-tools": "^3.2.1",
-    "core-js": "^3.19.3",
+    "core-js": "^3.26.0",
     "firebase": "^9.6.4",
     "jalali-moment": "^3.3.10",
     "nuxt": "^2.15.8",
